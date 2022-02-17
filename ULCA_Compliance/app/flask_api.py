@@ -471,7 +471,7 @@ def infer_indic_speech():
         audio_bytes=body["audioContent"]
         model,generator,dictionary = name2model_dict[language]
         nm = str(round(time.time() * 1000))
-        af ="base64"
+        af ="wav"
         vad_val = 2
         chunk_size = float(5.0)
         fp_arr = load_data(audio_bytes,of='bytes',lang=language,bytes_name=nm+"."+af)
