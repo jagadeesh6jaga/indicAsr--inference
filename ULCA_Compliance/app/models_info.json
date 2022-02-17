@@ -1,0 +1,56 @@
+
+{
+    "hi":{
+            "model_path":"/home/neo/asr-indic-speech-models/checkpoints/hi/accoustic_model/hindi_large.pt",
+            "lm_details" :
+                         {
+                        "nbest":1,
+                        "lexicon":"/home/neo/asr-indic-speech-models/checkpoints/hi/language_model/lexicon.lst",
+                        "kenlm_model":"/home/neo/asr-indic-speech-models/checkpoints/hi/language_model/lm.binary",
+                        "beam_size_token": 100,
+                        "beam":8,
+                        "beam_threshold":25,
+                        "lm_weight":1,
+                        "word_score":0.5,
+                        "sil_weight":0.0
+                        },
+            "lm_usage" : "True"
+
+         } ,
+         
+    "en":{
+            "model_path":"/home/neo/asr-indic-speech-models/checkpoints/en/accoustic_model/english_large.pt",
+            "lm_details" :
+                            {
+                        "nbest":1,
+                        "lexicon":"/home/neo/asr-indic-speech-models/checkpoints/en/language_model/lexicon.lst",
+                        "kenlm_model":"/home/neo/asr-indic-speech-models/checkpoints/en/language_model/lm.binary",
+                        "beam_size_token": 100,
+                        "beam":8,
+                        "beam_threshold":25,
+                        "lm_weight":1,
+                        "word_score":0.5,
+                        "sil_weight":0.0
+                        },
+            "lm_usage" : "True"
+
+        } ,
+    "ta":{
+            "model_path":"/home/neo/asr-indic-speech-models/checkpoints/ta/accoustic_model/tamil_large.pt",
+            "lm_details" :
+                            {
+                        "nbest":1,
+                        "lexicon":"/home/neo/asr-indic-speech-models/checkpoints/ta/language_model/lexicon.lst",
+                        "kenlm_model":"/home/neo/asr-indic-speech-models/checkpoints/ta/language_model/lm.binary",
+                        "beam_size_token": 100,
+                        "beam":8,
+                        "beam_threshold":25,
+                        "lm_weight":1,
+                        "word_score":0.5,
+                        "sil_weight":0.0
+                        },
+            "lm_usage" : "True"
+        
+        }
+
+}
