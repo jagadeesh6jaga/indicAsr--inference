@@ -463,7 +463,7 @@ def infer_ulca_mr():
 
 
 @app.route("/infer_indic_speech",methods=['POST'])
-@cross_origin()
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def infer_indic_speech():
         start_time=datetime.now()
         body = request.get_json()
