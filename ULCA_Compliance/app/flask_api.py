@@ -494,7 +494,7 @@ def infer_indic_speech():
         fp_arr = load_data(temp_wav)
         res = predict_from_sample(fp_arr,model,generator,dictionary,vad_val,chunk_size,language)
         total_time=datetime.now()-start_time
-        os.remove(wav_file)
+        #os.remove(wav_file)
         return jsonify({"transcript":res,"prediction_time" :str(total_time)})
     
     
