@@ -15,6 +15,8 @@ from vad_old import frame_generator, vad_collector
 from nltk import sent_tokenize
 from punctuate import RestorePuncts
 from datetime import datetime
+import uuid
+import base64
 
 punct_model = RestorePuncts()
 
@@ -469,14 +471,30 @@ def infer_indic_speech():
         body = request.get_json()
         language= body["source"]
         audio_bytes=body["audioContent"]
+
+        uniqueID=str(uuid.uuid1())
+        temp_wav=uniqueID+'.wav'
+
+        # if not os.path.exists(uniqueID):
+        #     os.makedirs(uniqueID)
+        
+        decoded_string = base64.b64decode(audio_bytes)
+        wav_file = open(temp_wav, "wb")
+        wav_file.write(decoded_string)
+
+        # input = os.path.join(uniqueID,'input_audio.wav')
+
+
         model,generator,dictionary = name2model_dict[language]
         nm = str(round(time.time() * 1000))
         af ="wav"
         vad_val = 2
         chunk_size = float(5.0)
-        fp_arr = load_data(audio_bytes,of='bytes',lang=language,bytes_name=nm+"."+af)
+        # fp_arr = load_data(wav_file,of='wav',lang=language,bytes_name=nm+"."+af)
+        fp_arr = load_data(temp_wav)
         res = predict_from_sample(fp_arr,model,generator,dictionary,vad_val,chunk_size,language)
         total_time=datetime.now()-start_time
+        os.remove(wav_file)
         return jsonify({"transcript":res,"prediction_time" :str(total_time)})
     
     
